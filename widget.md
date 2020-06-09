@@ -36,7 +36,7 @@ AlertDialog.Builder 클래스로 생성
 > ![dfhdf](https://user-images.githubusercontent.com/37764504/56454572-f1d02780-638d-11e9-958b-2210aea1a546.PNG)
 
 
-## [어댑터 뷰](https://github.com/yurrrri/Android_study/blob/master/adapterview.md)
+## [선택 위젯 or 어댑터 뷰](https://github.com/yurrrri/Android_study/blob/master/adapterview.md)
 > - 여러 개의 아이템 중에서 하나를 선택하는 방식을 가진 위젯
 > - 어댑터를 통해 각각의 아이템과 데이터를 관리하는 패턴
 > - 리스트뷰, 스피너, 그리드뷰, 갤러리
