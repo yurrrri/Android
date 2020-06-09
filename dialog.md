@@ -11,7 +11,7 @@ public class MainActivity extends AppCompatActivity {
       @Override  
 	  public void onClick(View v) {  
                 showMessage();  
-  }  
+	}  
         });  
   }  
   
@@ -20,43 +20,43 @@ public class MainActivity extends AppCompatActivity {
   // 대화상자 만들기 위한 빌더 객체 생성  
   // 객체 이름 생략: chaining
   
-  builder.setTitle("안내");  
-		  .setMessage("종료하시겠습니까?");  
-		  .setIcon(android.R.drawable.ic_dialog_alert);  
-		  //예 버튼 추가
-		  //클릭시 이벤트 처리:DialogInterface.OnClickListener
-		  .setPositiveButton("예", new DialogInterface.OnClickListener() {  
-        @Override 
-			  public void onClick(DialogInterface dialog, int which) {  
-		          String message = "예 버튼이 눌렸습니다. ";  
+  	builder.setTitle("안내");  
+		.setMessage("종료하시겠습니까?");  
+		.setIcon(android.R.drawable.ic_dialog_alert);  
+		 //예 버튼 추가
+		 //클릭시 이벤트 처리:DialogInterface.OnClickListener
+		 .setPositiveButton("예", new DialogInterface.OnClickListener() {  
+        		@Override 
+			public void onClick(DialogInterface dialog, int which) {  
+		              String message = "예 버튼이 눌렸습니다. ";  
 			      textView.setText(message);  
-  }  
-        });  
+			}  
+	 	  });  
   
-			 //취소 버튼 추가
+		    //취소 버튼 추가
 		  .setNeutralButton("취소", new DialogInterface.OnClickListener() {  
-            @Override  
-			  public void onClick(DialogInterface dialog, int which) {  
-			                String message = "취소 버튼이 눌렸습니다.";  
-			  textView.setText(message);  
-			  }  
-        });  
+            		@Override  
+			 public void onClick(DialogInterface dialog, int which) {  
+			        String message = "취소 버튼이 눌렸습니다.";  
+			  	textView.setText(message);  
+			  } 
+	 	  });  
   
 		//아니오 버튼 추가  
 		  .setNegativeButton("아니오", new DialogInterface.OnClickListener() {  
-            @Override  
-			  public void onClick(DialogInterface dialog, int which) {  
-			                String message = "아니오 버튼이 눌렸습니다.";  
-			  textView.setText(message);  
-  }  
-        });  
+		  	@Override  
+			 public void onClick(DialogInterface dialog, int which) {  
+			        String message = "아니오 버튼이 눌렸습니다.";  
+			  	textView.setText(message);  
+			}  
+		  });  
   
-		  //대화상자 객체 생성 후 보여주기
+		 //대화상자 객체 생성 후 보여주기
 		  
 		  AlertDialog dialog = builder.create();  
 		  dialog.show();
 		//builder.show() 로 대체 가능
-  }  
+	} 
 }
 ```
 ※ 대화상자의 종료에 관한 메소드 
@@ -72,12 +72,12 @@ public class MainActivity extends AppCompatActivity {
 res/values/arrays.xml  : values 폴더에 대화상자에 표시할 목록의 배열 생성
 ```xml
 <resources>  
- <string-array name="foods">  
- <item>짜장면</item>  
- <item>짬뽕</item>  
- <item>우동</item>  
- <item>탕수육</item>  
- </string-array></resources>
+  <string-array name="foods">  
+  <item>짜장면</item>  
+  <item>짬뽕</item>  
+  <item>우동</item>  
+  <item>탕수육</item>  
+  </string-array></resources>
 ```
 
 MainActivity.java
@@ -102,8 +102,8 @@ builder.setItems(R.array.foods, new DialogInterface.OnClickListener() {
 int selectedindex;
 //selectedindex : 이전에 선택한 항목의 index를 저장하는데, 
 //이 값을 보유하려면 별도의 멤버 변수를 선언해서 저장해두어야 함
-
-		.setSingleChoiceItems(R.array.foods, selectedindex, new 		DialogInterface.OnClickListener() {  
+...중략 ...
+	.setSingleChoiceItems(R.array.foods, selectedindex, new DialogInterface.OnClickListener() {  
 		    @Override  
 		  public void onClick(DialogInterface dialog, int which) {  
 		        selectedindex = which;  
@@ -155,16 +155,15 @@ builder.setTitle("음식 추가")
         .setView(addfood_layout)  
         .setPositiveButton("추가", new DialogInterface.OnClickListener() {  
             @Override  
-			 public void onClick(DialogInterface dialog, int which) {
-			 //edtName은 커스텀 레이아웃에 있으므로 addfood_layout에서 id를 찾아야함
-                EditText edtName = 
-                addfood_layout.findViewById(R.id.edtName);  
+	    public void onClick(DialogInterface dialog, int which) {
+	        //edtName은 커스텀 레이아웃에 있으므로 addfood_layout에서 id를 찾아야함
+                EditText edtName = addfood_layout.findViewById(R.id.edtName);  
                 EditText edtNation = addfood_layout.findViewById(R.id.edtNation);  
 		  //어댑터로 음식 객체 추가
 		  manager.addFood(new Food(edtName.getText().toString(), edtNation.getText().toString())); 
 		  //데이터의 변화가 일어났으면 어댑터에 반드시 알려야함. 그때 쓰이는 메소드 
 		  adapter.notifyDataSetChanged();  
-  }  
+		  }  
         })  
         .setNegativeButton("취소", null)  
         .show();
