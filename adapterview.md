@@ -155,7 +155,9 @@ public class MainActivity extends AppCompatActivity {
 - 각 TextView 클릭 시 서로 다른 Toast가 뜨도록 작성
 
 1. 개별 뷰 레이아웃 작성 - custom_adapter_view.xml
+
 ![customadapter_layout](https://user-images.githubusercontent.com/37764504/84146686-09d59f80-aa97-11ea-87f3-142ba0bf91ae.PNG)
+
 
 2. townData.java - DTO 클래스 작성
 ```java
