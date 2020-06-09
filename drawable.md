@@ -8,6 +8,8 @@
 - 상태 드로어블 : 상태별로 다른 비트맥 그래픽을 참조
 - 셰이프 드로어블 : 색상과 그라데이션 등 도형 모양을 상세히 설정 가능
 
+[**소스코드**](https://github.com/yurrrri/Android_study/tree/master/Drawable)
+
 ### 상태 드로어블 만들기
 
 - 터치하면 이미지가 바뀌는 드로어블
@@ -26,7 +28,6 @@
 ```
 
 ### 셰이프 드로어블
-[**1~3번 실습예제**](https://github.com/yurrrri/Android_study/tree/master/Drawable)
 
  1. 기본
 
