@@ -81,6 +81,8 @@ public class MainActivity extends AppCompatActivity {
 - AlertDialog.Builder setCancelable (boolean cancelable) : 대화상자의 버튼이 눌렸을 때 Back 버튼을 누르면 대화상자가 닫히게 하는 메소드
 - void Dialog.setCancelOnTouchOutside (Boolean cancel) : 대화상자 외부 클릭 시 대화상자가 종료할 수 있도록 설정하는 메소드 (Dialog 클래스 생성 필요)
 
+[**2~5번까지의 실습예제**](https://github.com/yurrrri/Android_study/tree/master/DialogTest)
+
 **2. 목록을 가지고 있는 대화상자**
 
 ![dialog](https://user-images.githubusercontent.com/37764504/83961632-f62c0c80-a8cf-11ea-843f-57212092b053.GIF)
