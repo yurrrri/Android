@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
-## 제스처 
+## 제스처 이벤트 리스너
 
 - GestureDectector : 제스처 이벤트를 처리해주는 클래스
 dectetor = new GestureDector(this, new GestureDectector.OnGestureListener() { ... ) 에서 메소드 정의
