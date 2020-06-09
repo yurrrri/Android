@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 - AlertDialog.Builder setCancelable (boolean cancelable) : 대화상자의 버튼이 눌렸을 때 Back 버튼을 누르면 대화상자가 닫히게 하는 메소드
 - void Dialog.setCancelOnTouchOutside (Boolean cancel) : 대화상자 외부 클릭 시 대화상자가 종료할 수 있도록 설정하는 메소드 (Dialog 클래스 생성 필요)
 
-[**2~5번까지의 실습예제**](https://github.com/yurrrri/Android_study/tree/master/DialogTest)
+[**2~4번까지의 실습예제**](https://github.com/yurrrri/Android_study/tree/master/DialogTest)
 
 **2. 목록을 가지고 있는 대화상자**
 
@@ -125,4 +125,47 @@ boolean[] selectedItems = {false, false, false, false};
   }  
 })
 ```
-**5. 커스텀 대화상자** : final layout 변수로 레이아웃 inflation 후 builder.setView(layout);
+[**5. 커스텀 대화상자**](https://github.com/yurrrri/Android_study/tree/master/CustomDialog) : 
+final layout 변수로 레이아웃 inflation 후 builder.setView(layout);
+
+![custom_dialog](https://user-images.githubusercontent.com/37764504/84122486-76d73e00-aa73-11ea-8291-3fa37c3b1df9.PNG)
+
+MainActivity.java  - 
+커스텀 레이아웃을 대화상자에 띄우고, 음식을 리스트뷰에 추가하는 앱
+```java
+//리스트뷰의 원본 데이터를 관리하는 매니저 객체 준비
+manager = new FoodManager();  
+ //리스트뷰
+listView = findViewById(R.id.listView);  
+ 
+foodList = manager.getFoodList();  
+  
+// Food 객체의 toString() 메소드가 호출되어 하나의 문자열로 처리됨
+// 어댑터 객체 생성
+adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, foodList);
+
+// 리스트뷰와 어댑터 연결
+listView.setAdapter(adapter);
+//커스텀 레이아웃 인플레이션
+final ConstraintLayout addfood_layout = (ConstraintLayout) View.inflate(this, R.layout.addfood_layout, null);  
+  
+AlertDialog.Builder builder = new AlertDialog.Builder(this);  
+builder.setTitle("음식 추가")
+		//커스텀 레이아웃 뷰를 대화상자에 띄우기
+        .setView(addfood_layout)  
+        .setPositiveButton("추가", new DialogInterface.OnClickListener() {  
+            @Override  
+			 public void onClick(DialogInterface dialog, int which) {
+			 //edtName은 커스텀 레이아웃에 있으므로 addfood_layout에서 id를 찾아야함
+                EditText edtName = 
+                addfood_layout.findViewById(R.id.edtName);  
+                EditText edtNation = addfood_layout.findViewById(R.id.edtNation);  
+		  //어댑터로 음식 객체 추가
+		  manager.addFood(new Food(edtName.getText().toString(), edtNation.getText().toString())); 
+		  //데이터의 변화가 일어났으면 어댑터에 반드시 알려야함. 그때 쓰이는 메소드 
+		  adapter.notifyDataSetChanged();  
+  }  
+        })  
+        .setNegativeButton("취소", null)  
+        .show();
+```
