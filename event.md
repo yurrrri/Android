@@ -3,7 +3,7 @@
 
 1. 상속 메소드 재정의 : View가 가지고 있는 기본적인 이벤트 처리 메소드 재정의
 2. 리스너 인터페이스 구현 ★
-3. XML의 속서에 메소드 명 등록 후 메소드 정의
+3. XML의 속성에 메소드 명 등록 후 메소드 정의
 
 ## 리스너 Interface 구현
 
@@ -12,9 +12,9 @@
 - View.onTouchListener : 터치할 때 발생하는 이벤트 처리
 - View.onKeyListener : 키패드나 하드웨어 버튼 입력 시 발생하는 이벤트 처리
 - View.onClickListener : 클릭 시 발생하는 이벤트 처리
-- View.onFocusChangeListener : 뷰에 포커스가 주어지거나 없어질 경우에 발생하는 이벤트
+- View.onLongClickListener : 롱 클릭 시 발생하는 이벤트 처리
 
-### 리스너 구현 예시
+### 터치 이벤트 리스너
 
 ```java
 public class MainActivity extends AppCompatActivity {  
@@ -24,9 +24,10 @@ public class MainActivity extends AppCompatActivity {
 	      //리스너 등록		//리스너 객체 구현
 	     view.setOnTouchListener(new View.OnTouchListener() { 
 	         @Override  
-		public boolean onTouch(View view, MotionEvent motionEvent) {  
+		public boolean onTouch(View view, MotionEvent motionEvent) {
+			//터치 액션 구분
 	                int action = motionEvent.getAction();  
-	                //손가락이 눌렸는지, 떼졌는지 상태 정보
+			//터치된 X, Y좌표
 			float curX = motionEvent.getX();  
 			float curY = motionEvent.getY();  
 	  
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
-## 제스처 이벤트 처리
+## 제스처 
 
 - GestureDectector : 제스처 이벤트를 처리해주는 클래스
 dectetor = new GestureDector(this, new GestureDectector.OnGestureListener() { ... ) 에서 메소드 정의
@@ -111,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
       
 ```
 
-## 키 이벤트 처리
+## 키 이벤트 리스너
 
 - View의 이벤트 처리 메소드 재정의를 통해 이벤트를 처리함
 - boolean onKeyDown(int keyCode, KeyEvent event)
