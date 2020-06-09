@@ -18,6 +18,10 @@ File -> Project Structure.... -> app-> Dependencies -> + 아이콘 -> Library de
 
 ## [대화상자](https://github.com/yurrrri/Android_study/new/master/dialog.md)
 
+> ![hfch](https://user-images.githubusercontent.com/37764504/56305646-a1817b80-617b-11e9-83b0-9e0d82dbbaa9.PNG)
+
+AlertDialog.Builder 클래스로 생성
+
 ## 프로그레스바
 > 어떤 작업의 진행 상태를 보여줄 때 쓰는 위젯
 > 
