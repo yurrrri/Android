@@ -1,4 +1,4 @@
-## [어댑터 뷰](https://github.com/yurrrri/Android_study/new/master/adapterview.md)
+## [선택 위젯 or 어댑터 뷰](https://github.com/yurrrri/Android_study/new/master/adapterview.md)
 > - 여러 개의 아이템 중에서 하나를 선택하는 방식을 가진 위젯
 > - 어댑터를 통해 각각의 아이템과 데이터를 관리하는 패턴
 > - 리스트뷰, 스피너, 그리드뷰, 갤러리
