@@ -36,7 +36,7 @@ AlertDialog.Builder 클래스로 생성
 > ![dfhdf](https://user-images.githubusercontent.com/37764504/56454572-f1d02780-638d-11e9-958b-2210aea1a546.PNG)
 
 
-## [드로어블](https://github.com/yurrrri/Android_study/new/master/drawable.md)
+## [드로어블](https://github.com/yurrrri/Android_study/blob/master/drawable.md)
 
 > 뷰에 설정할 수 있는 객체이며 그 위에 그래픽 그리기 가능
 
