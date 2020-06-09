@@ -43,11 +43,6 @@ AlertDialog.Builder 클래스로 생성
 
 ![1 (1)](https://user-images.githubusercontent.com/37764504/58173324-07f73d80-7cd6-11e9-8425-99a9a7ae27df.jpg)
 
-
-### 스피너
-
-> ![spinner](https://user-images.githubusercontent.com/37764504/83966941-70708700-a8f8-11ea-99c3-1daa6fa71fd1.png)
-
 ## [드로어블](https://github.com/yurrrri/Android_study/blob/master/drawable.md)
 
 > 뷰에 설정할 수 있는 객체이며 그 위에 그래픽 그리기 가능
