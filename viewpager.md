@@ -2,6 +2,7 @@
 > 좌우로 스크롤하여 넘겨볼 수 있는 위젯
 
 ![1](https://user-images.githubusercontent.com/37764504/84042455-0cc18900-a9e0-11ea-9f56-d6ebd856ed47.png)
+![mypager](https://user-images.githubusercontent.com/37764504/84191147-0829cd00-aad3-11ea-928f-8cb3dc43fade.PNG)
 
 [**소스코드**](https://github.com/yurrrri/Android_study/tree/master/MyPager)
 
