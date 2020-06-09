@@ -16,7 +16,7 @@
 File -> Project Structure.... -> app-> Dependencies -> + 아이콘 -> Library dependency -> com.android.support:design -> OK
 - Snackbar.make(View, Text, Snackbar.LENGTH_LONG/SHORT).show(); 
 
-## [대화상자](https://github.com/yurrrri/Android_study/new/master/dialog.md)
+## [대화상자](https://github.com/yurrrri/Android_study/blob/master/dialog.md)
 
 > ![hfch](https://user-images.githubusercontent.com/37764504/56305646-a1817b80-617b-11e9-83b0-9e0d82dbbaa9.PNG)
 
