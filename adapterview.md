@@ -149,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
 
 ![customadapter_lab](https://user-images.githubusercontent.com/37764504/84142668-28846800-aa90-11ea-9fde-ba66f05853e4.PNG)
 
-[소스파일](
+[**소스파일**](https://github.com/yurrrri/Android_study/tree/master/CustomAdapterLab)
 - 항목 롱클릭 시 삭제 수행
 - ViewHolder로 스크롤 속도 개선
 - 각 TextView 클릭 시 서로 다른 Toast가 뜨도록 작성
