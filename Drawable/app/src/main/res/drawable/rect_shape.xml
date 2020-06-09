@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+   >
+    <size
+        android:width="200dp"
+        android:height="120dp"/>
+    <stroke android:width="1dp"
+        android:color="#0000ff"/> //테두리선
+    <solid android:color="#aaddff"></solid> //배경색
+    <padding android:bottom="1dp"/>
+</shape>
