@@ -1,4 +1,3 @@
-
 # 화면 전환
 ## 레이아웃 인플레이션
 >  XML 레이아웃의 내용이 메모리에 객체화되는 과정
@@ -53,75 +52,83 @@ protected void onCreate(Bundle savedInstanceState) {
  - XML 레이아웃 파일과 자바 소스 파일 생성 필요
 2. 메인 액티비티에서 새 액티비티 띄우기
 - startActivity() 메소드로 띄우기
-- 액티비티간에 응답을 주고받아야 할때				**startActivityForResult()** 사용
+- 액티비티간에 응답을 주고받아야 할때 **startActivityForResult()** 사용
 3. 새로운 액티비티에서 응답 보내기
 - setResult() 메소드로 응답 보내기
 4. 응답 처리하기
 - 메인 액티비티에서 onActivityResult() 메소드를 재정의한 후 새 액티비티에서 받은 응답 처리
 
+[실습 예제](https://github.com/yurrrri/Android_study/tree/master/Intent)
+
 - MenuActivity(새 액티비티)
 ```java
-@Override  
-protected void onCreate(Bundle savedInstanceState) {  
-	  super.onCreate(savedInstanceState);  
-	  setContentView(R.layout.activity_menu);  
-	  
-	  Button button = findViewById(R.id.button);  
-	  button.setOnClickListener(new View.OnClickListener() {  
-  @Override  
-  public void onClick(View v) {  
-      Intent intent = new Intent();  
-	  intent.putExtra("name", "mike");  
-//인텐트 객체에 key와 value값 형태로 데이터 전달  
-	  setResult(RESULT_OK, intent);  
-	  //새로 띄운 액티비티에서 이전 액티비티로 인텐트 전달  
-	  finish();  
-	  //현재 액티비티를 화면에서 없앰
-	  }  
-    });  
+public class MenuActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_menu);
+
+        Button button = findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent();
+		//key:name, value:mike로 데이터를 저장
+                intent.putExtra("name", "mike");
+		//이전 액티비티로 RESULT_OK 라는 응답 전달
+                setResult(RESULT_OK, intent);
+
+		//버툰을 누르면 현재 액티비티 종료
+                finish();
+            }
+        });
+
+    }
 }
 ```
 
 - MainActivity
 ```java
-public class MainActivity extends AppCompatActivity {  
-    public static final int REQUEST_CODE_MENU = 101;  //액티비티를 구분하기 위한 코드 임의 지정
-  
-  @Override  //재정의할 메소드
-	protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {  
-        super.onActivityResult(requestCode, resultCode, data); 
-  // data : 새 액티비티로부터 전달 받은 인텐트  
-  
-	  if (requestCode==REQUEST_CODE_MENU){  
-            Toast.makeText(getApplicationContext(), "onActivityResult 메서드 	호출됨. 요청 코드 : "+requestCode+", 결과 코드 : "+resultCode, 	Toast.LENGTH_LONG).show();  
-  
-	 if (resultCode==RESULT_OK){  
-                //RESULT_OK : 새 액티비티에서 처리한 결과가 정상인 경우
-  String name = data.getStringExtra("name");  
-  Toast.makeText(getApplicationContext(), "응답으로 전달된 name : "+name, Toast.LENGTH_LONG).show();  
-  }  
-        }  
-    }  
-  
-    @Override  
-  protected void onCreate(Bundle savedInstanceState) {  
-        super.onCreate(savedInstanceState);  
-	  setContentView(R.layout.activity_main);  
-  
-	  Button button = findViewById(R.id.button);  
-	  button.setOnClickListener(new View.OnClickListener() {  
-   
-  
-  @Override  
-  public void onClick(View v) { 
-	  //인텐트 객체 생성
-     Intent intent = new Intent(getApplicationContext(),MenuActivity.class);  
-	  startActivityForResult(intent, REQUEST_CODE_MENU);  
-	  //startActivity와는 달리 새 액티비티로부터 응답을 받을 수 있음  
-  }  
-        });  
-  }  
+public class MainActivity extends AppCompatActivity {
+    public static final int REQUEST_CODE_MENU = 101;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        Button button = findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
+                startActivityForResult(intent, REQUEST_CODE_MENU);
+            }
+        });
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        //Main->Menu에 응답을 보냈다가 다시 MainActivity로 온 경우,
+        if (requestCode == REQUEST_CODE_MENU) {
+            Toast.makeText(getApplicationContext(),
+                    "onActivityResult 메소드 호출됨. 요청 코드 : " + requestCode +
+                            ", 결과 코드 : " + resultCode, Toast.LENGTH_LONG).show();
+            //MenuActivity가 RESULT_OK 코드를 보냈으면,
+            if (resultCode == RESULT_OK) {
+                //key가 name인 string값을 가져옴
+                String name = data.getStringExtra("name");
+                Toast.makeText(getApplicationContext(), "응답으로 전달된 name : " + name,
+                        Toast.LENGTH_LONG).show();
+            }
+        }
+
+    }
 }
+
 ```
 
 ### 인텐트 메소드
@@ -145,14 +152,18 @@ public class MainActivity extends AppCompatActivity {
 - 부가 데이터 : 추가적인 정보를 넣을 수 있도록 번들 객체 포함
 
 예시 1 - TEXT의 번호 대로 전화거는 화면
+
+![callintent](https://user-images.githubusercontent.com/37764504/84177032-40beac00-aabd-11ea-91d6-54e4c71b311b.png)
+
 ```java
 String data = editText.getText().toString();  
-  
+
 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(data));  
 //전화번호 입력 화면으로 넘어가는 인텐트  
-  
+
 startActivity(intent);
 ```
+
 ## 플래그
 > 시스템은 인텐트 별로 새 액티비티를 띄우기 때문에 중복된 액티비티가 나타날 수 있음
 => 이를 방지하기 위한 것이 플래그(Flag)
@@ -180,55 +191,6 @@ startActivity(intent);
 - putExtra(Key, Value)
 - get자료형Extra(자료형 name)
 
-※ 객체 자료형의 경우 객체 자체를 전달할 수 없으므로 Serializable 객체를 구현해서 직렬화한 다음 전달해야함
-
-**Parcelable 인터페이스**
-> 객체를 전달할때 사용되는 인터페이스
-
-- SimpleData.java
-```java
-public class SimpleData implements Parcelable {  
-  
-   int number;  
-  String message;  
-  
- public SimpleData(int number, String message) {  
-     this.number = number;  
-	 this.message = message;  
-  }  
-  
-  //Parcel 객체에서 읽기
-    public SimpleData(Parcel src){  
-        number = src.readInt();  
-	  message = src.readString();  
-  }  
-  
-    //Parcel 객체에서 데이터를 읽어서 객체 생성  
-  //반드시 static final로 선언되어야함!  
-  public static final Parcelable.Creator CREATOR = new Parcelable.Creator(){  
-        public SimpleData createFromParcel(Parcel src){  
-            return new SimpleData(src);  
-  }  
-  
-        public SimpleData[] newArray(int size){  
-            return new SimpleData[size];  
-  }  
-    };  
-  
-  //직렬화하려는 객체의 유형 구분하기 위한 메소드
-  @Override  
-  public int describeContents() {  
-        return 0;  
-  }  
-  
-    //객체의 데이터를 Parcel객체로 만들어줌  
-  @Override  
-  public void writeToParcel(Parcel dest, int flags) {  
-        dest.writeInt(number);  
-  dest.writeString(message);  
-  }  
-}
-```
 
 ## 수명 주기
 > 액티비티의 상태정보는 대표적으로 실행, 일시 정지, 중지가 있는데 이 상태정보의 변화가 수명주기
@@ -243,60 +205,3 @@ public class SimpleData implements Parcelable {
 - onPause() : 또 다른 액티비티를 시작하려고 할 때
 - onStop() : 액티비티를 중지할 때
 - onDestroy() : 액티비티가 소멸되어 없어지기 전에 
-
-### SharedPreferences
-> 앱에서 데이터를 저장하거나 복원할 때 쓰이는 인터페이스
-- SharedPreferences.Editor = pref.edit() 호출 후,
-- putOOO() 메소드로 데이터를 설정하거나
-- clear()로 지울 수 있음
-
-```java
-public class MainActivity extends AppCompatActivity {    
-  @Override  
-  protected void onCreate(Bundle savedInstanceState) {  
-        super.onCreate(savedInstanceState);  
-  setContentView(R.layout.activity_main);  
-  
-... 중략
-  
-    @Override  
-  protected void onResume() {  
-        super.onResume();  
-  
-  //Toast.makeText(this, "onResume() 호출됨", Toast.LENGTH_SHORT).show();  
-  
-  SharedPreferences pref = getSharedPreferences("pref", Activity.MODE_PRIVATE);  
- if (pref!=null){  
-            String name = pref.getString("name", "");
-//SharedPreferences에 키 name으로 저장된 값 가져오기
-
-  Toast.makeText(this, "복구된 이름 :"+name, Toast.LENGTH_SHORT).show();  
-  }  
-    }  
-  
-    @Override  
-  protected void onStart() {  
-        super.onStart();  
-  
-  Toast.makeText(this, "onStart() 호출됨", Toast.LENGTH_SHORT).show();  
-  }  
-  
-    @Override  
-  protected void onPause() {  
-        super.onPause();  
-  
-  Toast.makeText(this, "onPause() 호출됨", Toast.LENGTH_SHORT).show();  
-  SharedPreferences pref = getSharedPreferences("pref", Activity.MODE_PRIVATE);  
-  SharedPreferences.Editor editor = pref.edit();  
-  editor.putString("name", "yrrrrr");  //키를 name으로 해서 yrrrrr 이라는 문자열 저장
-  editor.commit(); //저장할 때 이 메소드를 호출해야함  
-  }  
-  
-    @Override  
-  protected void onDestroy() {  
-        super.onDestroy();  
-  
-  Toast.makeText(this, "onDestroy() 호출됨", Toast.LENGTH_SHORT).show();  
-  }  
-}
-```
