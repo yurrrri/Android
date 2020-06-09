@@ -149,13 +149,15 @@ public class MainActivity extends AppCompatActivity {
 
 ![customadapter_lab](https://user-images.githubusercontent.com/37764504/84142668-28846800-aa90-11ea-9fde-ba66f05853e4.PNG)
 
-[소스파일](
+[**소스파일**](https://github.com/yurrrri/Android_study/tree/master/CustomAdapterLab)
 - 항목 롱클릭 시 삭제 수행
 - ViewHolder로 스크롤 속도 개선
 - 각 TextView 클릭 시 서로 다른 Toast가 뜨도록 작성
 
 1. 개별 뷰 레이아웃 작성 - custom_adapter_view.xml
-![customadapter_layout](https://user-images.githubusercontent.com/37764504/84143077-e576c480-aa90-11ea-8060-6389fbc11f07.PNG)
+
+![customadapter_layout](https://user-images.githubusercontent.com/37764504/84146686-09d59f80-aa97-11ea-87f3-142ba0bf91ae.PNG)
+
 
 2. townData.java - DTO 클래스 작성
 ```java
