@@ -430,54 +430,6 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
-### 하단탭
-
-![tab2](https://user-images.githubusercontent.com/37764504/84042156-b0f70000-a9df-11ea-946c-58b20fdaccf4.PNG)
-
-- BottomNavigationView 위젯 사용
-- 상단탭과 같이 탭을 선택할때마다 보여줄 프래그먼트 xml과 자바 소스파일 생성 후, 리스너를 구현
-
-MainActivity.java
-```java
-public class MainActivity extends AppCompatActivity {  
-  
-  Fragment1 fragment1;  
-  Fragment2 fragment2;  
-  Fragment3 fragment3;  
-  
-  @Override  
-  protected void onCreate(Bundle savedInstanceState) {  
-        super.onCreate(savedInstanceState);  
-  setContentView(R.layout.activity_main);  
-  
-	  fragment1 = new Fragment1();  
-	  fragment2 = new Fragment2();  
-	  fragment3 = new Fragment3();  
-	  
-  getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment1).commit();  
-  
-	  BottomNavigationView bottomNavigation = findViewById(R.id.bottom_navigation);  
-	  bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {  
-      @Override  
-	  public boolean onNavigationItemSelected(@NonNull MenuItem item) {  
-                switch (item.getItemId()) {  
-                    case R.id.tab1: 
-				  getSupportFragmentManager().beginTransaction()  
-                               .replace(R.id.container,fragment1).commit();  
-  
-					 return true; 
-					 case R.id.tab2:  
-				 getSupportFragmentManager().beginTransaction()  
-                               .replace(R.id.container,fragment2).commit();  
-				  return true;
-				  --- 중략 ---
-                return false;  
-  }  
-        });  
-  }  
-}
-```
-
 ## View Pager
 > 좌우로 스크롤하여 넘겨볼 수 있는 위젯
 
