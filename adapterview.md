@@ -112,3 +112,8 @@ public class MainActivity extends AppCompatActivity {
   }  
 
 ```
+
+
+### 스피너
+
+> ![spinner](https://user-images.githubusercontent.com/37764504/83966941-70708700-a8f8-11ea-99c3-1daa6fa71fd1.png)
