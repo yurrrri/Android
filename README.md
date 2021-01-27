@@ -1,4 +1,4 @@
-# Android_Study
+# Android_practice
 
 ## [기본 위젯 & 드로어블](https://github.com/yurrrri/Android/blob/master/widget.md)
  - ### [대화상자](https://github.com/yurrrri/Android_study/blob/master/dialog.md)
