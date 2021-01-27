@@ -5,7 +5,7 @@
  - ### [어댑터 뷰](https://github.com/yurrrri/Android_study/blob/master/adapterview.md)
  - ### [드로어블](https://github.com/yurrrri/Android_study/blob/master/drawable.md)
 ## [이벤트](https://github.com/yurrrri/Android/blob/master/event.md)
-## [화면 전환](https://github.com/yurrrri/Android/blob/master/activity_change.md)
+## [화면 전환(인텐트)](https://github.com/yurrrri/Android/blob/master/activity_change.md)
 ## [프래그먼트](https://github.com/yurrrri/Android/blob/master/fragment.md)
 - ### [액션바](https://github.com/yurrrri/Android/blob/master/actionbar.md)
 - ### [탭](https://github.com/yurrrri/Android/blob/master/tab.md)
