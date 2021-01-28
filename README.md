@@ -13,3 +13,4 @@
 - ### [바로가기 메뉴](https://github.com/yurrrri/Android/blob/master/navigation.md)
 ## [생명주기(LifeCycle)](https://github.com/yurrrri/Android_practice/tree/master/ActivityLifeCycleTest)
 ## [스레드(Thread)](https://github.com/yurrrri/Android_practice/tree/master/ToyThread)
+## [Retrofit을 이용한 JSON Parsing](https://github.com/yurrrri/Android_practice/tree/master/RetrofitTest)
